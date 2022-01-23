@@ -35,57 +35,21 @@ int checkABC(int i,string s){
 
 void solve(){
 
-int n,q;
-cin>>n>>q;
+int n,a,b;
 
-string s;
-cin>>s;
+cin>>a>>b;
 
-int w=0;
-for(int i=0;i<n-2;i++)
-w+=checkABC(i,s);
-// cout<<w;
-// cout<<endl;
-// cout<<endl;
-while(q--)
-{
-    int y;
-    char ch;
-    cin>>y>>ch;
-    y--;
-    if(s[y]=='a'){
-        if(y+2<n and s[y+1]=='b' and s[y+2]=='c') w--;
-    }
-    else if(s[y]=='b'){
-        if(y-1>-1 and y+1<n and s[y-1]=='a' and s[y+1]=='c') w--;
-    }
-    else{
-        if(y-2>-1 and s[y-1]=='b' and s[y-2]=='a') w--;
-    }
 
-    s[y]=ch;
-
-    if(s[y]=='a'){
-        if(y+2<n and s[y+1]=='b' and s[y+2]=='c') w++;
-    }
-    else if(s[y]=='b'){
-        if(y-1>-1 and y+1<n and s[y-1]=='a' and s[y+1]=='c') w++;
-    }
-    else{
-        if(y-2>-1 and s[y-1]=='b' and s[y-2]=='a') w++;
-    }
-    cout<<w<<endl;
-}
 }
 
 int main(){     
 
-    // int t;
-    // cin>>t;
+    int t;
+    cin>>t;
 
-    // while(t--)
-    // {
-    // solve();
-    // }
-solve();
+    
+    while(t--)
+    {
+    solve();
+    }
 }

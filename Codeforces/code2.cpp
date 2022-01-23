@@ -1,5 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
+
 typedef long long LL;
 typedef pair<int, int> pii;
 typedef pair<LL, LL> pll;
@@ -104,48 +105,34 @@ bool vowelOrConsonant(char x)
 
 void solve(){
 
-int l,r,k;
-cin>>l>>r>>k;
-if(l==r and l!=1)
-{
-    cout<<"YES\n";
-    return;
-}
-if(l==r and l==1){
-    cout<<"NO\n";
-    return;
-}
-int even=0;
-int odd=0;
+int n,k;
+cin>>n>>k;
 
-int d=r-l+1;
-if(d%2==0)
+vector<pair<int,int>> v;
+
+for(int i=0;i<n;i++)
 {
-    even=d/2;
-    odd=d/2;
+    int a;
+    cin>>a;
+    v.push_back(make_pair(a,i));
 }
-else{
-    if(l%2==0){
-        even=d/2+1;
-        odd=d/2;
+int b[n];
+for(int i=0;i<n;i++)
+cin>>b[i];
+
+sort(v.begin(),v.end());
+
+for(int i=0;i<n;i++){
+    if(k>=v[i].first)
+    {
+        k+=b[v[i].second];
     }
     else{
-        even=d/2;
-        odd=d/2+1;
+        break;
     }
 }
-int net=min(even,odd);
-int diff=odd-even;
 
-if(diff>0)
-net+=diff;
-
-if(net<=k)
-cout<<"YES\n";
-else
-cout<<"NO\n";
-
-
+cout<<k<<"\n";
 }
 
 
