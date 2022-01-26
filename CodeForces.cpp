@@ -104,60 +104,36 @@ bool vowelOrConsonant(char x)
 
 void solve(){
 
-int l,r,k;
-cin>>l>>r>>k;
-if(l==r and l!=1)
-{
-    cout<<"YES\n";
-    return;
-}
-if(l==r and l==1){
-    cout<<"NO\n";
-    return;
-}
-int even=0;
-int odd=0;
+ int n,m;
+ cin>>n>>m;
 
-int d=r-l+1;
-if(d%2==0)
-{
-    even=d/2;
-    odd=d/2;
-}
-else{
-    if(l%2==0){
-        even=d/2+1;
-        odd=d/2;
-    }
-    else{
-        even=d/2;
-        odd=d/2+1;
-    }
-}
-int net=min(even,odd);
-int diff=odd-even;
+ vector<int> v;
 
-if(diff>0)
-net+=diff;
-
-if(net<=k)
-cout<<"YES\n";
-else
-cout<<"NO\n";
+ for(int i=0;i<n;i++)
+ {
+     for(int j=0;j<m;j++)
+     {
+         v.push_back(max({abs(i-n+1)+abs(j-m+1),abs(i-0)+abs(j-0),abs(i-0)+abs(j-m+1),abs(i-n+1)+abs(j-0)}));
+     }
+ }
+sort(v.begin(),v.end());
+for(auto i:v)
+cout<<i<<" ";
+cout<<"\n";
+}
 
 
-}
 
 
 int main(){     
+
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    int t;
-    cin>>t;
 
+    ll t;
+    cin>>t;
     while(t--)
     {
     solve();
     }
-
 }
