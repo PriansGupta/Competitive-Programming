@@ -6,57 +6,45 @@ using namespace std;
 #define ss second
 #define all(v) v.begin(), v.end()
 
-void solve()
+void solve(int t)
 {
-
-  int n;
+  ll n;
   cin >> n;
 
-  vector<pair<char, char>> v;
+  vector<int> v(n);
 
-  for (int i = 0; i < n - 2; i++)
+  for (int i = 0; i < n; i++)
+    cin >> v[i];
+
+  int curAns;
+  int curMx;
+
+  cout << "Case #" << t << ": " << 1 << " ";
+
+  curAns = 1;
+  curMx = v[0];
+
+  for (int i = 1; i < n; i++)
   {
-    string s;
-    cin >> s;
-
-    v.push_back(make_pair(s[0], s[1]));
+    curMx = max(curMx, v[i]);
+    curAns = min(v[i], min(curAns, v[i]));
+    cout <<curAns << " ";
   }
-  vector<char> ans;
-  ans.push_back(v[0].ff);
-  for (int i = 0; i < n - 3; i++)
-  {
-    if (v[i].ss == v[i + 1].ff)
-      ans.push_back(v[i].ss);
-
-    else
-    {
-      ans.push_back(v[i].ss);
-      ans.push_back(v[i + 1].ff);
-    }
-  }
-
-  if (ans.size() == n - 1)
-    ans.push_back(v[n - 3].ss);
-
-  if (ans.size() == n - 2)
-  {
-    ans.push_back(v[n - 3].ss);
-    ans.push_back(v[n - 3].ss);
-  }
-
-  for (auto x : ans)
-    cout << x;
-  cout << "\n";
+  cout<<"\n";
 }
 
 int main()
 {
 
+  ios_base::sync_with_stdio(false);
+  cin.tie(NULL);
+
   int t;
   cin >> t;
-
-  while (t--)
+  int x = 1;
+  while (x <= t)
   {
-    solve();
+    solve(x);
+    x++;
   }
 }

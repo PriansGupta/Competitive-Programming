@@ -16,8 +16,7 @@ typedef vector<vl> vvl;
 #define all(v) v.begin(), v.end()
 const int M = 1e9 + 7;
 const int m = 1e9 + 7;
-int a[200005];
-// memset(lookup, 0, sizeof(lookup))
+
 int moadd(int a, int b)
 {
     return ((a % m) + (b % m)) % m;
@@ -106,55 +105,43 @@ bool isprime(int n)
     return true;
 }
 
-bool vowelCheck(char ch)
+bool vowelOrConsonant(char x)
 {
-    if (ch == 'a' or ch == 'e' or ch == 'i' or ch == 'o' or ch == 'u' or ch == 'A' or ch == 'E' or ch == 'I' or ch == 'O' or ch == 'U')
+    if (x == 'a' || x == 'e' || x == 'i' ||
+        x == 'o' || x == 'u')
         return true;
-
-    return false;
+    else
+        return false;
 }
-
-void solve()
+int lis(vector<int> &v)
 {
-    int n;
-    cin >> n;
-
-    vector<int> a,b,c,d;
-
-    for(int i=0;i<n;i++)
+    multiset<int> s;
+    for (int i = 0; i < v.size(); i++)
     {
-        int x;
-        cin>>x;
+        s.insert(v[i]);
+        auto it = s.upper_bound(v[i]);
+        if (it != s.end())
+            s.erase(it);
+    }
+    return s.size();
+}
+ int climb(int c[],int n)
+    {
+        if(n==2)
+        return min(c[n-1],c[n-2]);
+        
+        int ans=c[n-1]+min(climb(c,n-1),climb(c,n-2));
+        return ans;
 
-        if(x & 1)
-        {
-            a.push_back(x);
-            b.push_back(x);
-        }
-        else{
-            c.push_back(x);
-            d.push_back(x);
-        }
     }
 
-    sort(a.begin(),a.end());
-    sort(c.begin(),c.end());
-
-    if(a==b and c==d)
-    cout<<"Yes\n";
-    else
-    cout<<"No\n";
-}
 int main()
 {
 
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 
-    int t;
-    cin >> t;
-    while (t--)
-    {
-        solve();
-    }
+    int arr[] = {1,100,1,1,1,100,1,1,100,1};
+
+    cout << climb(arr,10);
 }

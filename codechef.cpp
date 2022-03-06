@@ -36,61 +36,31 @@ int bin_Mul(long long a, long long b)
     }
     return ans;
 }
-int checkABC(int i, string s)
-{
-    return (s[i] == 'a' && s[i + 1] == 'b' && s[i + 2] == 'c') == true ? 1 : 0;
-}
-
-int calc(vector<int> &a)
-{
-    multiset<int> s;
-    for (int i = 0; i < a.size(); i++)
-    {
-        s.insert(a[i]);
-        auto it = s.upper_bound(a[i]);
-        if (it != s.end())
-            s.erase(it);
-    }
-    return s.size();
-}
 
 void solve()
 {
+    int n, k;
+    cin >> n >> k;
 
-    ll n;
-    cin >> n;
-    int mx = -1;
-    int k = -1;
-    ll v[n];
-    for (int i = 0; i < n; i++)
+    if (k==n)
     {
-        cin >> v[i];
-        int x = v[i];
-        while (x % 2 == 0)
-            x /= 2;
-        if (mx < x)
-        {
-            mx = x;
-            k = i;
-        }
+        for(int i=1;i<=n;i++)
+        cout<<i<<" ";
+        cout<<"\n";
+        return;
     }
-    for (int i = 0; i < n; i++)
+    int a[n + 1];
+
+    for (int i = 1; i <= n; i++)
+        a[i] = i;
+    cout << n - k + 1 << " ";
+    for (int i = 1; i <= n - k; i++)
     {
-        if (!(v[i] & 1) and i != k)
-        {
-            while (v[i] % 2 == 0)
-            {
-                v[k] *= 2;
-                v[i] /= 2;
-            }
-        }
+        cout << i << " ";
     }
-
-    ll sum = 0;
-    for (int i = 0; i < n; i++)
-        sum += v[i];
-
-    cout << sum << "\n";
+    for (int i = n - k + 2; i <= n; i++)
+        cout << i << " ";
+    cout << "\n";
 }
 
 int main()
