@@ -5,37 +5,40 @@ using namespace std;
 #define ff first
 #define ss second
 #define all(v) v.begin(), v.end()
+const ll N=1e9+1;
+
+lll S[N];
 
 void solve(int t)
 {
-  ll n;
-  cin >> n;
 
-  vector<int> v(n);
+ll a,b;
+cin>>a>>b;
 
-  for (int i = 0; i < n; i++)
-    cin >> v[i];
+int cnt=0;
+for(ll i=a;i<=b;i++){
 
-  int curAns;
-  int curMx;
+  ll n=i;
+  ll f=1;
+  ll s=0;
 
-  cout << "Case #" << t << ": " << 1 << " ";
-
-  curAns = 1;
-  curMx = v[0];
-
-  for (int i = 1; i < n; i++)
-  {
-    curMx = max(curMx, v[i]);
-    curAns = min(v[i], min(curAns, v[i]));
-    cout <<curAns << " ";
+  while(n){
+    int r=n%10;
+    f*=r;
+    s+=r;
+    n/=10;
   }
-  cout<<"\n";
+
+  if(f%s==0)
+  cnt++;
+}
+cout << "Case #" << t << ": "<<cnt<<"\n";
 }
 
 int main()
 {
 
+  cout<<S[0];
   ios_base::sync_with_stdio(false);
   cin.tie(NULL);
 
