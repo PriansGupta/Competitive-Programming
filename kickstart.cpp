@@ -7,7 +7,7 @@ using namespace std;
 #define all(v) v.begin(), v.end()
 const long long double N=1e12+1;
 
-long long double S[N];
+lll S[N];
 
 void solve(int t)
 {
