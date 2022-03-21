@@ -5,7 +5,7 @@ using namespace std;
 #define ff first
 #define ss second
 #define all(v) v.begin(), v.end()
-const ll N=1e9+1;
+const ll N=1e6+1;
 
 lll S[N];
 
