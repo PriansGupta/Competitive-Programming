@@ -39,28 +39,24 @@ int bin_Mul(long long a, long long b)
 
 void solve()
 {
-    int n, k;
-    cin >> n >> k;
+    int n;
+    cin >> n;
 
-    if (k==n)
-    {
-        for(int i=1;i<=n;i++)
-        cout<<i<<" ";
-        cout<<"\n";
-        return;
-    }
-    int a[n + 1];
+    int one = 0, two = 0;
 
-    for (int i = 1; i <= n; i++)
-        a[i] = i;
-    cout << n - k + 1 << " ";
-    for (int i = 1; i <= n - k; i++)
+    for (int i = 0; i < n; i++)
     {
-        cout << i << " ";
+        int x;
+        cin >> x;
+        if (x == 1)
+            one++;
+        else if (x == 2)
+            two++;
     }
-    for (int i = n - k + 2; i <= n; i++)
-        cout << i << " ";
-    cout << "\n";
+
+    ll ans = one * (n-one-two) + (two * (two - 1)) / 2 +two*one+(one * (one - 1)) / 2;
+
+    cout << ans << "\n";
 }
 
 int main()

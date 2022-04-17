@@ -116,34 +116,91 @@ bool vowelCheck(char ch)
 
 void solve()
 {
-    int n;
-    cin >> n;
+   int x,y;
+   cin>>x>>y;
 
-    vector<int> a,b,c,d;
+   if(x&1 and y&1)
+    cout<<"-1\n";
 
-    for(int i=0;i<n;i++)
-    {
-        int x;
-        cin>>x;
+    else{
+        if(x%2==0 and y%2==0){
+            string s1="";
+            for(int i=1;i<=x;i++)
+            s1+='a';
 
-        if(x & 1)
-        {
-            a.push_back(x);
-            b.push_back(x);
+            for(int i=1;i<=y/2;i++)
+            s1+='b';
+            for(int i=1;i<=y/2;i++)
+            s1='b'+s1;
+
+
+            string s2="";
+            for(int i=1;i<=y;i++)
+            s2+='b';
+
+            for(int i=1;i<=x/2;i++)
+            s2+='a';
+            for(int i=1;i<=x/2;i++)
+            s2='a'+s2;
+
+            cout<<s1<<"\n";
+            cout<<s2<<"\n";
         }
         else{
-            c.push_back(x);
-            d.push_back(x);
+            if(x%2==1 and y%2==0){
+                string s1="";
+            for(int i=1;i<=x;i++)
+            s1+='a';
+
+            for(int i=1;i<=y/2;i++)
+            s1+='b';
+            for(int i=1;i<=y/2;i++)
+            s1='b'+s1;
+
+
+            string s2="a";
+            x--;
+            for(int i=1;i<=y/2;i++)
+            s2+='b';
+            for(int i=1;i<=y/2;i++)
+            s2='b'+s2;
+
+            for(int i=1;i<=x/2;i++)
+            s2+='a';
+            for(int i=1;i<=x/2;i++)
+            s2='a'+s2;
+
+            cout<<s1<<"\n";
+            cout<<s2<<"\n";
+            }
+            else{
+                 string s1="";
+            for(int i=1;i<=y;i++)
+            s1+='b';
+
+            for(int i=1;i<=x/2;i++)
+            s1+='a';
+            for(int i=1;i<=x/2;i++)
+            s1='a'+s1;
+
+
+            string s2="b";
+            y--;
+            for(int i=1;i<=x/2;i++)
+            s2+='a';
+            for(int i=1;i<=x/2;i++)
+            s2='a'+s2;
+
+            for(int i=1;i<=y/2;i++)
+            s2+='b';
+            for(int i=1;i<=y/2;i++)
+            s2='b'+s2;
+
+            cout<<s1<<"\n";
+            cout<<s2<<"\n";
+            }
         }
     }
-
-    sort(a.begin(),a.end());
-    sort(c.begin(),c.end());
-
-    if(a==b and c==d)
-    cout<<"Yes\n";
-    else
-    cout<<"No\n";
 }
 int main()
 {
