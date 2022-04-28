@@ -39,33 +39,33 @@ int bin_Mul(long long a, long long b)
 
 void solve()
 {
-    int n;
-    cin >> n;
+    string s;
+    cin >> s;
 
-    int one = 0, two = 0;
-
-    for (int i = 0; i < n; i++)
+    int ans = INT_MIN;
+    int c = 1;
+    char ch = s[0];
+    for (int i = 1; i < s.length(); i++)
     {
-        int x;
-        cin >> x;
-        if (x == 1)
-            one++;
-        else if (x == 2)
-            two++;
+        if (ch == s[i])
+        {
+            c++;
+        }
+        else
+        {
+            ch = s[i];
+            ans = max(ans, c);
+            c = 1;
+        }
     }
-
-    ll ans = one * (n-one-two) + (two * (two - 1)) / 2 +two*one+(one * (one - 1)) / 2;
+    ans = max(ans, c);
 
     cout << ans << "\n";
 }
 
 int main()
 {
-
-    int t;
-    cin >> t;
-    while (t--)
-    {
-        solve();
-    }
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    solve();
 }
