@@ -113,27 +113,7 @@ bool vowelOrConsonant(char x)
     else
         return false;
 }
-int lis(vector<int> &v)
-{
-    multiset<int> s;
-    for (int i = 0; i < v.size(); i++)
-    {
-        s.insert(v[i]);
-        auto it = s.upper_bound(v[i]);
-        if (it != s.end())
-            s.erase(it);
-    }
-    return s.size();
-}
- int climb(int c[],int n)
-    {
-        if(n==2)
-        return min(c[n-1],c[n-2]);
-        
-        int ans=c[n-1]+min(climb(c,n-1),climb(c,n-2));
-        return ans;
 
-    }
 
 int main()
 {
