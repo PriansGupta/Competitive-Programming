@@ -1,1 +1,1 @@
-{"name":"Local: CodeForces","url":"d:\\CPP\\CodeForces.cpp","tests":[{"id":1650123518041,"input":"2\n2 2\n3 3","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\CPP\\CodeForces.cpp","group":"local","local":true}
+{"name":"Local: CodeForces","url":"d:\\CPP\\CodeForces.cpp","tests":[{"id":1650123518041,"input":"4\n4\n7\n24\n998244353998244352\n","output":"1 1\n-1\n4 6\n166374058999707392 249561088499561088\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\CPP\\CodeForces.cpp","group":"local","local":true}
