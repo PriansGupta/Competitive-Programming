@@ -116,23 +116,32 @@ bool vowelCheck(char ch)
 
 void solve()
 {
-    ll n;
-    cin >> n;
+   int n;
+   cin>>n;
 
-    if (n & 1 or n < 4)
-        cout << "-1\n";
+   vector<int> a(n);
 
-    else
-    {
-        ll max, min;
-        if (n % 6 == 0)
-            min = n / 6;
-        else
-            min = n / 6 + 1;
+   for(int i=0;i<n;i++)
+   cin>>a[i];
 
-        max = n / 4;
-        cout << min << " " << max << "\n";
-    }
+    vector<int> b=a;
+
+    sort(b.begin(),b.end());
+   
+   for(int i=n-1;i>=0;i-=2){
+       if(i==0)
+       break;
+       if(a[i]<a[i-1]){
+           int t=a[i];
+           a[i]=a[i-1];
+           a[i-1]=t;
+       }
+   }
+
+   if(a==b)
+   cout<<"YES\n";
+   else
+   cout<<"NO\n";
 }
 
 int main()
