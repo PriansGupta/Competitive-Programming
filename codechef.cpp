@@ -18,7 +18,6 @@ const int M = 1e9 + 7;
 const int m = 1e9 + 7;
 int a[200005];
 
-
 int moadd(int a, int b)
 {
     return ((a % m) + (b % m)) % m;
@@ -117,7 +116,69 @@ bool vowelCheck(char ch)
 
 void solve()
 {
-   
+    ll n;
+    cin >> n;
+
+    vector<ll> v(n);
+
+    for (int i = 0; i < n; i++)
+        cin >> v[i];
+
+    int bit[32] = {0};
+
+    for (int i = 0; i < 32; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            if (v[j] & (1 << i))
+                bit[i]++;
+        }
+    }
+    ll number = 0;
+    for (int i = 0; i < 32; i++)
+    {
+        if (bit[i] == n)
+        {
+            number += 1 << i;
+        }
+    }
+
+    vector<int> a;
+
+    int x = 0;
+
+    for (int i = 0; i < n; i++)
+    {
+        if (v[i] != number)
+        {
+            x++;
+        }
+        else
+        {
+            if (x)
+            {
+                a.push_back(x);
+                x = 0;
+            }
+        }
+    }
+
+    if (x)
+        a.push_back(x);
+
+    ll ans = 0;
+    if(a.size()==0){
+
+    }
+    for (auto y : a)
+    {
+        if (y > 1)
+            ans += y - 1;
+        else
+            ans += y;
+    }
+
+    cout << ans << "\n";
 }
 int main()
 {

@@ -1,1 +1,1 @@
-{"name":"Local: codechef","url":"d:\\CPP\\codechef.cpp","tests":[{"id":1651165850986,"input":"ATTCGGGAAAAAA","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\CPP\\codechef.cpp","group":"local","local":true}
+{"name":"Local: codechef","url":"d:\\CPP\\codechef.cpp","tests":[{"id":1651165850986,"input":"4\n4\n0 0 0 1\n2\n1 1\n6\n1 2 3 4 5 6\n4\n2 28 3 22","output":"1\n0\n4\n3"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\CPP\\codechef.cpp","group":"local","local":true}

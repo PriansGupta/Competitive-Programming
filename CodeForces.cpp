@@ -72,7 +72,7 @@ int bin(int a, int b)
     {
         if (b & 1)
         {
-            ans = (ans * 1LL* a) % M;
+            ans = (ans * 1LL * a) % M;
         }
         a = (a * 1LL * a) % M;
         b >>= 1;
@@ -114,37 +114,47 @@ bool vowelCheck(char ch)
     return false;
 }
 
+int steps(int k)
+{
+    if (k > 3)
+        return k - 3;
+    else if (k == 2 or k == 3)
+        return k - 2;
+    else
+        return 0;
+}
 void solve()
 {
 
-    string s, t;
+    ll n, m;
+    cin >> n >> m;
 
-    cin >> s >> t;
+    vector<pair<ll, ll>> v;
 
-    bool b = 0;
-    if (t == "a")
+    for (ll i = 0; i < n; i++)
     {
-        cout << "1\n";
-        return;
+        ll x;
+        cin >> x;
+
+        v.push_back({x, i});
     }
 
-    for (ll i = 0; i < t.length(); i++)
+    sort(v.begin(), v.end());
+    ll mx = v[n - 1].first;
+    ll jmax;
+
+    for (ll i = n - 1; i >= 0; i--)
     {
-        if (t[i] == 'a')
+        ll x = v[i].first;
+
+        if (x < mx)
         {
-            b = 1;
+            jmax = x;
             break;
         }
     }
-
-    if (b)
-        cout << "-1\n";
-
-    else
-    {
-        ll ans = pow(2,s.length());
-        cout << ans << '\n';
-    }
+    ll ans = max(2 * mx, mx + jmax + (jmax - mx) % m + m);
+    cout << ans << "\n";
 }
 
 int main()
