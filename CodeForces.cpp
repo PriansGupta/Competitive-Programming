@@ -67,12 +67,12 @@ int max(int a, int b)
 }
 int bin(int a, int b)
 {
-    int ans = 1;
+    ll ans = 1;
     while (b)
     {
         if (b & 1)
         {
-            ans = (ans * 1LL * a) % M;
+            ans = (ans * 1LL* a) % M;
         }
         a = (a * 1LL * a) % M;
         b >>= 1;
@@ -86,9 +86,9 @@ int bin_Mul(long long a, long long b)
     {
         if (b & 1)
         {
-            ans = (ans + a) % M;
+            ans = (ans + a);
         }
-        a = (a + a) % M;
+        a = (a + a);
         b >>= 1;
     }
     return ans;
@@ -116,32 +116,35 @@ bool vowelCheck(char ch)
 
 void solve()
 {
-   int n;
-   cin>>n;
 
-   vector<int> a(n);
+    string s, t;
 
-   for(int i=0;i<n;i++)
-   cin>>a[i];
+    cin >> s >> t;
 
-    vector<int> b=a;
+    bool b = 0;
+    if (t == "a")
+    {
+        cout << "1\n";
+        return;
+    }
 
-    sort(b.begin(),b.end());
-   
-   for(int i=n-1;i>=0;i-=2){
-       if(i==0)
-       break;
-       if(a[i]<a[i-1]){
-           int t=a[i];
-           a[i]=a[i-1];
-           a[i-1]=t;
-       }
-   }
+    for (ll i = 0; i < t.length(); i++)
+    {
+        if (t[i] == 'a')
+        {
+            b = 1;
+            break;
+        }
+    }
 
-   if(a==b)
-   cout<<"YES\n";
-   else
-   cout<<"NO\n";
+    if (b)
+        cout << "-1\n";
+
+    else
+    {
+        ll ans = pow(2,s.length());
+        cout << ans << '\n';
+    }
 }
 
 int main()
