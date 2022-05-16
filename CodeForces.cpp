@@ -6,7 +6,7 @@ typedef pair<LL, LL> pll;
 typedef pair<string, string> pss;
 typedef vector<int> vi;
 typedef vector<vi> vvi;
-typedef vector<pii> vii;
+typedef vector<pii> vpi;
 typedef vector<LL> vl;
 typedef vector<vl> vvl;
 #define ll long long int
@@ -114,47 +114,61 @@ bool vowelCheck(char ch)
     return false;
 }
 
-int steps(int k)
-{
-    if (k > 3)
-        return k - 3;
-    else if (k == 2 or k == 3)
-        return k - 2;
-    else
-        return 0;
-}
 void solve()
 {
 
-    ll n, m;
-    cin >> n >> m;
+    ll n, q;
+    cin >> n >> q;
 
-    vector<pair<ll, ll>> v;
+    vector<ll> v(n + 1);
+    ll sum = 0;
 
-    for (ll i = 0; i < n; i++)
+    for (ll i = 1; i < n + 1; i++)
     {
-        ll x;
-        cin >> x;
-
-        v.push_back({x, i});
+        cin >> v[i];
+        sum += v[i];
     }
 
-    sort(v.begin(), v.end());
-    ll mx = v[n - 1].first;
-    ll jmax;
-
-    for (ll i = n - 1; i >= 0; i--)
+    int pre = -1;
+    ll num = -1;
+    while (q--)
     {
-        ll x = v[i].first;
+        int t;
+        cin >> t;
 
-        if (x < mx)
+        if (t == 1)
         {
-            jmax = x;
-            break;
+            ll i, x;
+            cin >> i >> x;
+
+            if (pre == -1)
+                sum += x - v[i];
+            else if (pre == 1)
+            {
+                if (num == -1)
+                    sum += x - v[i];
+
+                else
+                    sum += x - num;
+            }
+            else
+            {
+                sum += x - num;
+            }
+            pre = 1;
+            cout << sum << "\n";
+        }
+        else
+        {
+            ll x;
+            cin >> x;
+
+            sum = n * x;
+            pre = 2;
+            num = x;
+            cout << sum << "\n";
         }
     }
-    ll ans = max(2 * mx, mx + jmax + (jmax - mx) % m + m);
-    cout << ans << "\n";
 }
 
 int main()
@@ -163,10 +177,11 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 
-    int t;
-    cin >> t;
-    while (t--)
-    {
-        solve();
-    }
+    // int t;
+    // cin >> t;
+    // while (t--)
+    // {
+    //     solve();
+    // }
+    solve();
 }
