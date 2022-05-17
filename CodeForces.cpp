@@ -116,59 +116,31 @@ bool vowelCheck(char ch)
 
 void solve()
 {
+    ll n, x;
+    cin >> n >> x;
 
-    ll n, q;
-    cin >> n >> q;
+    vector<ll> v(n);
+    ll mn = INT_MAX;
 
-    vector<ll> v(n + 1);
-    ll sum = 0;
-
-    for (ll i = 1; i < n + 1; i++)
+    for (ll i = 0; i < n; i++)
     {
         cin >> v[i];
-        sum += v[i];
     }
 
-    int pre = -1;
-    ll num = -1;
-    while (q--)
+    sort(v.begin(), v.end());
+    ll sum = 0;
+    ll ans = 0;
+
+    for (ll i = 0; i < n; i++)
     {
-        int t;
-        cin >> t;
-
-        if (t == 1)
+        sum += v[i];
+        if (sum <= x)
         {
-            ll i, x;
-            cin >> i >> x;
-
-            if (pre == -1)
-                sum += x - v[i];
-            else if (pre == 1)
-            {
-                if (num == -1)
-                    sum += x - v[i];
-
-                else
-                    sum += x - num;
-            }
-            else
-            {
-                sum += x - num;
-            }
-            pre = 1;
-            cout << sum << "\n";
-        }
-        else
-        {
-            ll x;
-            cin >> x;
-
-            sum = n * x;
-            pre = 2;
-            num = x;
-            cout << sum << "\n";
+            ans += ((x - sum) / (i + 1)) + 1;
         }
     }
+
+    cout << ans << "\n";
 }
 
 int main()
@@ -177,11 +149,11 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 
-    // int t;
-    // cin >> t;
-    // while (t--)
-    // {
-    //     solve();
-    // }
-    solve();
+    int t;
+    cin >> t;
+    while (t--)
+    {
+        solve();
+    }
+    // solve();
 }
