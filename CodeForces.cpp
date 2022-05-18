@@ -116,28 +116,22 @@ bool vowelCheck(char ch)
 
 void solve()
 {
-    ll n, x;
-    cin >> n >> x;
+    int n;
+    cin >> n;
 
-    vector<ll> v(n);
-    ll mn = INT_MAX;
-
-    for (ll i = 0; i < n; i++)
-    {
-        cin >> v[i];
-    }
-
-    sort(v.begin(), v.end());
-    ll sum = 0;
     ll ans = 0;
+    unordered_map<char, int> m1, m2;
+    unordered_map<string, int> str;
 
-    for (ll i = 0; i < n; i++)
+    for (int i = 0; i < n; i++)
     {
-        sum += v[i];
-        if (sum <= x)
-        {
-            ans += ((x - sum) / (i + 1)) + 1;
-        }
+        string s;
+        cin >> s;
+
+        ans += m1[s[0]] + m2[s[1]] - str[s] * 2;
+        m1[s[0]]++;
+        m2[s[1]]++;
+        str[s]++;
     }
 
     cout << ans << "\n";
