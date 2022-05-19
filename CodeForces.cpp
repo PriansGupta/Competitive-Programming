@@ -86,9 +86,9 @@ int bin_Mul(long long a, long long b)
     {
         if (b & 1)
         {
-            ans = (ans + a)%M;
+            ans = (ans + a) % M;
         }
-        a = (a + a)%M;
+        a = (a + a) % M;
         b >>= 1;
     }
     return ans;
@@ -119,25 +119,23 @@ void solve()
     int n;
     cin >> n;
 
-    string s;
-    cin >> s;
-    ll ans = 1;
+    unordered_map<int, int> mp;
+
+    int mx = INT_MIN;
+
     for (int i = 0; i < n; i++)
     {
-        if (!vowelCheck(s[i]))
-        {
-            map<int, int> mp;
-            mp[abs(s[i] - 'a')]++;
-            mp[abs(s[i] - 'e')]++;
-            mp[abs(s[i] - 'i')]++;
-            mp[abs(s[i] - 'o')]++;
-            mp[abs(s[i] - 'u')]++;
-            for (auto x = mp.begin(); x != mp.end(); x++)
-            {
-                ans = bin_Mul(ans, x->second);
-                break;
-            }
-        }
+        int x;
+        cin >> x;
+        mp[x]++;
+        mx = max(mx, mp[x]);
+    }
+
+    int ans=n-mx;
+    while (mx < n)
+    {
+        ans++;
+        mx=mx<<1;
     }
 
     cout << ans << "\n";
