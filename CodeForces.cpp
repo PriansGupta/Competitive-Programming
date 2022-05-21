@@ -119,26 +119,10 @@ void solve()
     int n;
     cin >> n;
 
-    unordered_map<int, int> mp;
+   
 
-    int mx = INT_MIN;
+   
 
-    for (int i = 0; i < n; i++)
-    {
-        int x;
-        cin >> x;
-        mp[x]++;
-        mx = max(mx, mp[x]);
-    }
-
-    int ans=n-mx;
-    while (mx < n)
-    {
-        ans++;
-        mx=mx<<1;
-    }
-
-    cout << ans << "\n";
 }
 
 int main()
