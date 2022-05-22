@@ -7,32 +7,11 @@ using namespace std;
 #define all(v) v.begin(), v.end()
 const lll N=1e12+1;
 
-lll S[N];
-
 void solve(int t)
 {
 
-ll a,b;
-cin>>a>>b;
 
-int cnt=0;
-for(ll i=a;i<=b;i++){
-
-  ll n=i;
-  ll f=1;
-  ll s=0;
-
-  while(n){
-    int r=n%10;
-    f*=r;
-    s+=r;
-    n/=10;
-  }
-
-  if(f%s==0)
-  cnt++;
-}
-cout << "Case #" << t << ": "<<cnt<<"\n";
+// cout << "Case #" << t << ": "<<ans<<"\n";
 }
 
 int main()
