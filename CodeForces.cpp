@@ -114,15 +114,31 @@ bool vowelCheck(char ch)
     return false;
 }
 
+int checkBit(int pattern, vector<int> arr, int n)
+{
+    int count = 0;
+    for (int i = 0; i < n; i++)
+        if ((pattern & arr[i]) == pattern)
+            count++;
+    return count;
+}
+
 void solve()
 {
     int n;
     cin >> n;
 
-   
+    vector<int> v(n);
+    int res = (1 << 21)-1;
 
-   
+    for (int i = 0; i < n; i++)
+    {
+        cin >> v[i];
+        if (v[i] != i)
+            res &= v[i];
+    }
 
+    cout << res << "\n";
 }
 
 int main()
