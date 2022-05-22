@@ -6,28 +6,6 @@ using namespace std;
 #define ss second
 #define all(v) v.begin(), v.end()
 const lll N = 1e12 + 1;
-vector<int> ans;
-
-vector<int> isSubsetSum(int set[], int n, int sum, vector<int> &p)
-{
-  if (sum == 0)
-  {
-    return p;
-  }
-  if (n == 0)
-  {
-    return p;
-  }
-
-  if (set[n - 1] > sum)
-    p=isSubsetSum(set, n - 1, sum, p);
-
-  p=isSubsetSum(set, n - 1, sum, p);
-  p=isSubsetSum(set, n - 1, sum - set[n - 1], p);
-
-  p.push_back(set[n - 1]);
-  return p;
-}
 
 void solve(int t)
 {
@@ -66,15 +44,17 @@ void solve(int t)
          << "\n";
 
     ll subsum = c * x;
-    int arr[n];
-    for (int i = 0; i < n; i++)
-      arr[i] = i + 1;
-
     vector<int> p;
-    isSubsetSum(arr, n, subsum, p);
 
+    for (int i = n; i >= 1; i--)
+    {
+      if (i <= subsum)
+      {
+        p.push_back(i);
+        subsum -= i;
+      }
+    }
     cout << p.size() << "\n";
-
     for (auto x : p)
       cout << x << " ";
     cout << "\n";
