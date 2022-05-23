@@ -125,21 +125,26 @@ int checkBit(int pattern, vector<int> arr, int n)
 
 void solve()
 {
-    int n;
-    cin >> n;
+    ll n, m;
+    cin >> n >> m;
 
-    vector<int> v(n);
-    int res = (1 << 21)-1;
+    ll a[n];
 
-    for (int i = 0; i < n; i++)
+    for (ll i = 0; i < n; i++)
+        cin >> a[i];
+    sort(a, a + n);
+    m -= n;
+    m -= a[n - 1];
+    for (ll i = 0; i < n - 1; i++)
     {
-        cin >> v[i];
-        if (v[i] != i)
-            res &= v[i];
+        m -= max(a[i], a[i + 1]);
     }
-
-    cout << res << "\n";
+    if (m < 0)
+        cout << "NO\n";
+    else
+        cout << "YES\n";
 }
+
 
 int main()
 {
