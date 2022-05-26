@@ -125,28 +125,46 @@ int checkBit(int pattern, vector<int> arr, int n)
 
 void solve()
 {
-    ll n, B, x, y;
+    int n;
+    cin >> n;
 
-    cin >> n >> B >> x >> y;
+    vector<int> a(n);
+    vector<int> as(n);
+    vector<int> b(n);
+    vector<int> bs(n);
 
-    ll pre = 0;
-    ll sum = 0;
+    for (int i = 0; i < n; i++)
+        cin >> a[i];
 
-    for (int i = 1; i <= n; i++)
+    for (int i = 0; i < n; i++)
+        cin >> b[i];
+
+    vector<pair<int, int>> vp;
+
+    for (int i = 0; i < n; i++)
     {
-        if (pre + x <= B)
+        for (int j = i + 1; j < n; j++)
         {
-            sum += pre + x;
-            pre += x;
-        }
-        else
-        {
-            sum += pre - y;
-            pre -= y;
+            if ((a[i] >= a[j] and b[i] >= b[j]))
+            {
+                swap(a[i], a[j]);
+                swap(b[i], b[j]);
+                vp.push_back({i, j});
+            }
+            else if (a[i]<= a[j] and b[i]<= b[j])
+                continue;
+            else
+            {
+                cout << "-1\n";
+                return;
+            }
         }
     }
 
-    cout << sum << "\n";
+    cout << vp.size() << "\n";
+
+    for (auto x : vp)
+        cout << x.first << " " << x.second << "\n";
 }
 
 int main()
